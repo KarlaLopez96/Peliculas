@@ -4,9 +4,14 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -27,12 +32,28 @@ public class PeliculasFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_peliculas, container, false);
 
+        List<Peliculas> peliculasList;
+        RecyclerView recyclerView;
+        PeliculasAdapter adapter;
 
+            //filling the planet list
+            peliculasList = fillList();
+
+            //setting the recyclerview
+            recyclerView = view.findViewById(R.id.recyclerView);
+            LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+            adapter = new PeliculasAdapter(getContext(), peliculasList);
+
+            //recyclerview
+            recyclerView.setLayoutManager(linearLayoutManager);
+            recyclerView.setAdapter(adapter);
 
         return view;
+
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -57,6 +78,18 @@ public class PeliculasFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+    private ArrayList<Peliculas> fillList(){
+        String desc = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book";
+
+        ArrayList<Peliculas> l = new ArrayList<>();
+        l.add(new Peliculas(1, "Los Vengadores", desc));
+        l.add(new Peliculas(2, "Minecraft the movie", desc));
+        l.add(new Peliculas(3, "League of legends", desc));
+        l.add(new Peliculas(4, "Fate", desc));
+
+        return l;
     }
 
     /**
