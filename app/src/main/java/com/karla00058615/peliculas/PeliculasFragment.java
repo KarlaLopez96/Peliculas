@@ -81,13 +81,15 @@ public class PeliculasFragment extends Fragment {
     }
 
     private ArrayList<Peliculas> fillList(){
-        String desc = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book";
-
+        int cont = 0;
+        Bundle bundle = getArguments();
         ArrayList<Peliculas> l = new ArrayList<>();
-        l.add(new Peliculas(1, "Los Vengadores", desc));
-        l.add(new Peliculas(2, "Minecraft the movie", desc));
-        l.add(new Peliculas(3, "League of legends", desc));
-        l.add(new Peliculas(4, "Fate", desc));
+
+        while (!bundle.isEmpty()){
+            l.add(new Peliculas(bundle.getInt("name"+cont),bundle.getString("name"+cont),
+                    bundle.getString("description"+cont)));
+            cont++;
+        }
 
         return l;
     }
