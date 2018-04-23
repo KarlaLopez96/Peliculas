@@ -79,17 +79,20 @@ public class FavoritosFragment extends Fragment {
 
     private ArrayList<Peliculas> fillList(){
 
-        String desc,title;
+        int cont = 0;
+        int holder;
+        Bundle bundle = getArguments();
         ArrayList<Peliculas> l = new ArrayList<>();
-        final Bundle bundle = getArguments();
-        int cont = 0,id;
 
-        while (!bundle.isEmpty()){
-            id = bundle.getInt("id"+cont);
-            title = bundle.getString("name"+cont);
-            desc = bundle.getString("description"+cont);
-            l.add(new Peliculas(id,title,desc));
+        for (int i = 0;i < (bundle.size())/4;i++){
+            holder = bundle.getInt("fav"+cont);
+            if(holder == 1){
+                l.add(new Peliculas(bundle.getInt("name"+cont),bundle.getString("name"+cont),
+                        bundle.getString("description"+cont),bundle.getInt("fav"+cont)));
+            }
+            cont++;
         }
+
         return l;
     }
 

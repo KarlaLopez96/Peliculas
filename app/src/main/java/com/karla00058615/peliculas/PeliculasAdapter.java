@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -38,6 +39,7 @@ public class PeliculasAdapter extends RecyclerView.Adapter<PeliculasAdapter.Peli
     public void onBindViewHolder(final PeliculasViewHolder holder, final int position) {
         holder.titleTxtView.setText(peliculasList.get(position).getTitle());
         holder.descrTxtView.setText(peliculasList.get(position).getDesc());
+        //holder.img.setImageDrawable(peliculasList.get(position).getImg());
         holder.fav.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -60,12 +62,14 @@ public class PeliculasAdapter extends RecyclerView.Adapter<PeliculasAdapter.Peli
     }
 
     protected class PeliculasViewHolder extends RecyclerView.ViewHolder{
+        ImageView img;
         TextView titleTxtView, descrTxtView;
         Button fav;
 
         public PeliculasViewHolder(View itemView) {
             super(itemView);
 
+            //img = itemView.findViewById(R.id.peliculaImg);
             titleTxtView = itemView.findViewById(R.id.titleTxtView);
             descrTxtView = itemView.findViewById(R.id.descTxtView);
             fav = itemView.findViewById(R.id.button_fav);

@@ -85,9 +85,9 @@ public class PeliculasFragment extends Fragment {
         Bundle bundle = getArguments();
         ArrayList<Peliculas> l = new ArrayList<>();
 
-        while (!bundle.isEmpty()){
+        for (int i = 0;i < (bundle.size())/4;i++){
             l.add(new Peliculas(bundle.getInt("name"+cont),bundle.getString("name"+cont),
-                    bundle.getString("description"+cont)));
+                    bundle.getString("description"+cont),bundle.getInt("fav"+cont)));
             cont++;
         }
 

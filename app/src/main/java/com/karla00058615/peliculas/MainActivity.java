@@ -45,6 +45,8 @@ FavoritosFragment.OnFragmentInteractionListener{
             bundle.putString("name"+cont,peliculas.get(i).getTitle());
             bundle.putString("description"+cont,peliculas.get(i).getDesc());
             bundle.putInt("id"+cont,peliculas.get(i).getId());
+            bundle.putInt("fav"+cont,peliculas.get(i).getFav());
+            //bundle.putString("img"+cont,peliculas.get(i).getImg().toString());
             cont++;
         }
         cont = 0;
@@ -68,7 +70,21 @@ FavoritosFragment.OnFragmentInteractionListener{
         //Crea un fragmento y lo añade.
         FavoritosFragment fragment = new FavoritosFragment();
 
-        transaction.replace(R.id.fragmentC, fragment);
+        //se crea el bundle y se mandan todas las peliculas
+        Bundle bundle = new Bundle();
+        for (int i = 0;i<peliculas.size();i++){
+            bundle.putString("name"+cont,peliculas.get(i).getTitle());
+            bundle.putString("description"+cont,peliculas.get(i).getDesc());
+            bundle.putInt("id"+cont,peliculas.get(i).getId());
+            bundle.putInt("fav"+cont,peliculas.get(i).getFav());
+            //bundle.putString("img"+cont,peliculas.get(i).getImg().toString());
+            cont++;
+        }
+        cont = 0;
+        //se manda el bundle al fragment
+        fragment.setArguments(bundle);
+
+        transaction.add(R.id.fragmentC, fragment);
 
         //Realizando cambios.
         transaction.commit();
@@ -85,7 +101,22 @@ FavoritosFragment.OnFragmentInteractionListener{
 
         //Crea un fragmento y lo añade.
         PeliculasFragment fragment = new PeliculasFragment();
-        transaction.replace(R.id.fragmentC, fragment);
+
+        //se crea el bundle y se mandan todas las peliculas
+        Bundle bundle = new Bundle();
+        for (int i = 0;i<peliculas.size();i++){
+            bundle.putString("name"+cont,peliculas.get(i).getTitle());
+            bundle.putString("description"+cont,peliculas.get(i).getDesc());
+            bundle.putInt("id"+cont,peliculas.get(i).getId());
+            bundle.putInt("fav"+cont,peliculas.get(i).getFav());
+            //bundle.putString("img"+cont,peliculas.get(i).getImg().toString());
+            cont++;
+        }
+        cont = 0;
+        //se manda el bundle al fragment
+        fragment.setArguments(bundle);
+
+        transaction.add(R.id.fragmentC, fragment);
 
         //Realizando cambios.
         transaction.commit();
@@ -95,10 +126,13 @@ FavoritosFragment.OnFragmentInteractionListener{
         String desc = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book";
 
         ArrayList<Peliculas> l = new ArrayList<>();
-        l.add(new Peliculas(1, "Los Vengadores", desc));
-        l.add(new Peliculas(2, "Minecraft the movie", desc));
-        l.add(new Peliculas(3, "League of legends", desc));
-        l.add(new Peliculas(4, "Fate", desc));
+        l.add(new Peliculas(1, "Los Vengadores", desc,0/*getResources().getDrawable(R.drawable.avengers)*/));
+        l.add(new Peliculas(2, "Minecraft the movie", desc,0/*getResources().getDrawable(R.drawable.avengers)*/));
+        l.add(new Peliculas(3, "League of legends", desc,0/*getResources().getDrawable(R.drawable.avengers)*/));
+        l.add(new Peliculas(4, "Fate", desc,0/*getResources().getDrawable(R.drawable.avengers)*/));
+        l.add(new Peliculas(5, "HOLI", desc,1/*getResources().getDrawable(R.drawable.avengers)*/));
+        l.add(new Peliculas(6, "PERRO", desc,1/*getResources().getDrawable(R.drawable.avengers)*/));
+        l.add(new Peliculas(7, "!!!", desc,1/*getResources().getDrawable(R.drawable.avengers)*/));
 
         return l;
     }
