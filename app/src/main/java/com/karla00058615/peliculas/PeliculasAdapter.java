@@ -43,15 +43,16 @@ public class PeliculasAdapter extends RecyclerView.Adapter<PeliculasAdapter.Peli
         holder.fav.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Bundle bundle = new Bundle();
+                peliculasList.get(position).setFav(!peliculasList.get(position).getFav());
+                /*Bundle bundle = new Bundle();
                 bundle.putString("name"+cont,peliculasList.get(position).getTitle());
                 bundle.putString("description"+cont,peliculasList.get(position).getDesc());
                 bundle.putInt("id"+cont,peliculasList.get(position).getId());
 
                 FavoritosFragment fragment = new FavoritosFragment();
                 fragment.setArguments(bundle);
-                cont++;
-                Toast.makeText(context,"item: "+position,Toast.LENGTH_SHORT).show();
+                cont++;*/
+                Toast.makeText(context,"item: "+position + ", fav: " + peliculasList.get(position).getFav(),Toast.LENGTH_SHORT).show();
             }
         });
     }

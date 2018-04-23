@@ -45,7 +45,7 @@ FavoritosFragment.OnFragmentInteractionListener{
             bundle.putString("name"+cont,peliculas.get(i).getTitle());
             bundle.putString("description"+cont,peliculas.get(i).getDesc());
             bundle.putInt("id"+cont,peliculas.get(i).getId());
-            bundle.putInt("fav"+cont,peliculas.get(i).getFav());
+            bundle.putBoolean("fav"+cont,peliculas.get(i).getFav());
             //bundle.putString("img"+cont,peliculas.get(i).getImg().toString());
             cont++;
         }
@@ -76,7 +76,7 @@ FavoritosFragment.OnFragmentInteractionListener{
             bundle.putString("name"+cont,peliculas.get(i).getTitle());
             bundle.putString("description"+cont,peliculas.get(i).getDesc());
             bundle.putInt("id"+cont,peliculas.get(i).getId());
-            bundle.putInt("fav"+cont,peliculas.get(i).getFav());
+            bundle.putBoolean("fav"+cont,peliculas.get(i).getFav());
             //bundle.putString("img"+cont,peliculas.get(i).getImg().toString());
             cont++;
         }
@@ -108,7 +108,7 @@ FavoritosFragment.OnFragmentInteractionListener{
             bundle.putString("name"+cont,peliculas.get(i).getTitle());
             bundle.putString("description"+cont,peliculas.get(i).getDesc());
             bundle.putInt("id"+cont,peliculas.get(i).getId());
-            bundle.putInt("fav"+cont,peliculas.get(i).getFav());
+            bundle.putBoolean("fav"+cont,peliculas.get(i).getFav());
             //bundle.putString("img"+cont,peliculas.get(i).getImg().toString());
             cont++;
         }
@@ -126,13 +126,13 @@ FavoritosFragment.OnFragmentInteractionListener{
         String desc = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book";
 
         ArrayList<Peliculas> l = new ArrayList<>();
-        l.add(new Peliculas(1, "Los Vengadores", desc,0/*getResources().getDrawable(R.drawable.avengers)*/));
-        l.add(new Peliculas(2, "Minecraft the movie", desc,0/*getResources().getDrawable(R.drawable.avengers)*/));
-        l.add(new Peliculas(3, "League of legends", desc,0/*getResources().getDrawable(R.drawable.avengers)*/));
-        l.add(new Peliculas(4, "Fate", desc,0/*getResources().getDrawable(R.drawable.avengers)*/));
-        l.add(new Peliculas(5, "HOLI", desc,1/*getResources().getDrawable(R.drawable.avengers)*/));
-        l.add(new Peliculas(6, "PERRO", desc,1/*getResources().getDrawable(R.drawable.avengers)*/));
-        l.add(new Peliculas(7, "!!!", desc,1/*getResources().getDrawable(R.drawable.avengers)*/));
+        l.add(new Peliculas(1, "Los Vengadores", desc,false/*getResources().getDrawable(R.drawable.avengers)*/));
+        l.add(new Peliculas(2, "Minecraft the movie", desc,false/*getResources().getDrawable(R.drawable.avengers)*/));
+        l.add(new Peliculas(3, "League of legends", desc,false/*getResources().getDrawable(R.drawable.avengers)*/));
+        l.add(new Peliculas(4, "Fate", desc,false/*getResources().getDrawable(R.drawable.avengers)*/));
+        l.add(new Peliculas(5, "HOLI", desc,true/*getResources().getDrawable(R.drawable.avengers)*/));
+        l.add(new Peliculas(6, ":)", desc,true/*getResources().getDrawable(R.drawable.avengers)*/));
+        l.add(new Peliculas(7, "!!!", desc,true/*getResources().getDrawable(R.drawable.avengers)*/));
 
         return l;
     }

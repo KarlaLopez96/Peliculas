@@ -87,7 +87,7 @@ public class PeliculasFragment extends Fragment {
 
         for (int i = 0;i < (bundle.size())/4;i++){
             l.add(new Peliculas(bundle.getInt("name"+cont),bundle.getString("name"+cont),
-                    bundle.getString("description"+cont),bundle.getInt("fav"+cont)));
+                    bundle.getString("description"+cont),bundle.getBoolean("fav"+cont)));
             cont++;
         }
 

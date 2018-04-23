@@ -53,6 +53,7 @@ public class FavoritosFragment extends Fragment {
         return view;
     }
 
+
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
@@ -85,10 +86,9 @@ public class FavoritosFragment extends Fragment {
         ArrayList<Peliculas> l = new ArrayList<>();
 
         for (int i = 0;i < (bundle.size())/4;i++){
-            holder = bundle.getInt("fav"+cont);
-            if(holder == 1){
+            if(bundle.getBoolean("fav"+cont)){
                 l.add(new Peliculas(bundle.getInt("name"+cont),bundle.getString("name"+cont),
-                        bundle.getString("description"+cont),bundle.getInt("fav"+cont)));
+                        bundle.getString("description"+cont),bundle.getBoolean("fav"+cont)));
             }
             cont++;
         }

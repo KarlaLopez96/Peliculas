@@ -1,18 +1,17 @@
 package com.karla00058615.peliculas;
 
-import android.graphics.drawable.Drawable;
-
 /**
  * Created by Karla on 21/4/2018.
  */
 
 public class Peliculas {
 
-    private int id,fav;
+    private int id;
+    private  boolean fav;
     private String title, desc;
    // Drawable img;
 
-    public Peliculas(int id, String title, String desc,int fav) {
+    public Peliculas(int id, String title, String desc, boolean fav) {
         this.id = id;
         this.title = title;
         this.desc = desc;
@@ -24,7 +23,7 @@ public class Peliculas {
         return id;
     }
 
-    public int getFav() {
+    public boolean getFav() {
         return fav;
     }
 
@@ -36,7 +35,7 @@ public class Peliculas {
         this.id = id;
     }
 
-    public void setFav(int fav) {
+    public void setFav(boolean fav) {
         this.fav = fav;
     }
 
