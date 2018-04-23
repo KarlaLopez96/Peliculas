@@ -1,125 +1,73 @@
 package com.karla00058615.peliculas;
 
 import android.net.Uri;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener,PeliculasFragment.OnFragmentInteractionListener,
-FavoritosFragment.OnFragmentInteractionListener{
+public class MainActivity extends AppCompatActivity {
 
     Button pelis,fav;
-    ArrayList<Peliculas> peliculas = new ArrayList<>();
-    int cont = 0;
+    ArrayList<Peliculas> peliculasList = new ArrayList<>();
+    RecyclerView recyclerView;
+    PeliculasAdapter adapter;
+    LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        pelis = (Button)findViewById(R.id.button_peliculas);
-        fav = (Button) findViewById(R.id.button_favoritos);
+        //filling the peliculas list
+        peliculasList = fillList();
 
-        peliculas = fillList();
+        //setting the recyclerview.
+        recyclerView = findViewById(R.id.recyclerView);
+        adapter = new PeliculasAdapter(this, peliculasList);
 
-        pelis.setOnClickListener(this);
-
-        //Maneja los fragmentos.
-        android.app.FragmentManager fragmentManager = getFragmentManager();
-
-        //Crea una nueva trasacción.
-        android.app.FragmentTransaction transaction = fragmentManager.beginTransaction();
-
-        //Crea un fragmento y lo añade.
-        PeliculasFragment fragment = new PeliculasFragment();
-
-        //se crea el bundle y se mandan todas las peliculas
-        Bundle bundle = new Bundle();
-        for (int i = 0;i<peliculas.size();i++){
-            bundle.putString("name"+cont,peliculas.get(i).getTitle());
-            bundle.putString("description"+cont,peliculas.get(i).getDesc());
-            bundle.putInt("id"+cont,peliculas.get(i).getId());
-            bundle.putBoolean("fav"+cont,peliculas.get(i).getFav());
-            //bundle.putString("img"+cont,peliculas.get(i).getImg().toString());
-            cont++;
-        }
-        cont = 0;
-        //se manda el bundle al fragment
-        fragment.setArguments(bundle);
-
-        transaction.add(R.id.fragmentC, fragment);
-
-        //Realizando cambios.
-        transaction.commit();
+        //recyclerview
+        recyclerView.setLayoutManager(linearLayoutManager);
+        recyclerView.setAdapter(adapter);
     }
 
     public void favoritos(View view){
 
-        //Maneja los fragmentos.
-        android.app.FragmentManager fragmentManager = getFragmentManager();
+        //setting the recyclerview.
+        recyclerView = findViewById(R.id.recyclerView);
+        adapter = new PeliculasAdapter(this, fillFavList(peliculasList));
 
-        //Crea una nueva trasacción.
-        android.app.FragmentTransaction transaction = fragmentManager.beginTransaction();
+        //recyclerview
+        recyclerView.setLayoutManager(linearLayoutManager);
+        recyclerView.setAdapter(adapter);
 
-        //Crea un fragmento y lo añade.
-        FavoritosFragment fragment = new FavoritosFragment();
-
-        //se crea el bundle y se mandan todas las peliculas
-        Bundle bundle = new Bundle();
-        for (int i = 0;i<peliculas.size();i++){
-            bundle.putString("name"+cont,peliculas.get(i).getTitle());
-            bundle.putString("description"+cont,peliculas.get(i).getDesc());
-            bundle.putInt("id"+cont,peliculas.get(i).getId());
-            bundle.putBoolean("fav"+cont,peliculas.get(i).getFav());
-            //bundle.putString("img"+cont,peliculas.get(i).getImg().toString());
-            cont++;
-        }
-        cont = 0;
-        //se manda el bundle al fragment
-        fragment.setArguments(bundle);
-
-        transaction.add(R.id.fragmentC, fragment);
-
-        //Realizando cambios.
-        transaction.commit();
     }
 
-    @Override
-    public void onClick(View view) {
-
-        //Maneja los fragmentos.
-        android.app.FragmentManager fragmentManager = getFragmentManager();
-
-        //Crea una nueva trasacción.
-        android.app.FragmentTransaction transaction = fragmentManager.beginTransaction();
-
-        //Crea un fragmento y lo añade.
-        PeliculasFragment fragment = new PeliculasFragment();
-
-        //se crea el bundle y se mandan todas las peliculas
-        Bundle bundle = new Bundle();
-        for (int i = 0;i<peliculas.size();i++){
-            bundle.putString("name"+cont,peliculas.get(i).getTitle());
-            bundle.putString("description"+cont,peliculas.get(i).getDesc());
-            bundle.putInt("id"+cont,peliculas.get(i).getId());
-            bundle.putBoolean("fav"+cont,peliculas.get(i).getFav());
-            //bundle.putString("img"+cont,peliculas.get(i).getImg().toString());
-            cont++;
+    private ArrayList<Peliculas> fillFavList(List<Peliculas> l){
+        ArrayList<Peliculas> nl = new ArrayList<>();
+        for (Peliculas p: l) {
+            if (p.getFav())
+                nl.add(p);
         }
-        cont = 0;
-        //se manda el bundle al fragment
-        fragment.setArguments(bundle);
 
-        transaction.add(R.id.fragmentC, fragment);
+        return nl;
+    }
 
-        //Realizando cambios.
-        transaction.commit();
+    public void onClick(View view) {
+        //setting the recyclerview.
+        recyclerView = findViewById(R.id.recyclerView);
+        adapter = new PeliculasAdapter(this, peliculasList);
+
+        //recyclerview
+        recyclerView.setLayoutManager(linearLayoutManager);
+        recyclerView.setAdapter(adapter);
     }
 
     private ArrayList<Peliculas> fillList(){
@@ -130,18 +78,10 @@ FavoritosFragment.OnFragmentInteractionListener{
         l.add(new Peliculas(2, "Minecraft the movie", desc,false/*getResources().getDrawable(R.drawable.avengers)*/));
         l.add(new Peliculas(3, "League of legends", desc,false/*getResources().getDrawable(R.drawable.avengers)*/));
         l.add(new Peliculas(4, "Fate", desc,false/*getResources().getDrawable(R.drawable.avengers)*/));
-        l.add(new Peliculas(5, "HOLI", desc,true/*getResources().getDrawable(R.drawable.avengers)*/));
-        l.add(new Peliculas(6, ":)", desc,true/*getResources().getDrawable(R.drawable.avengers)*/));
-        l.add(new Peliculas(7, "!!!", desc,true/*getResources().getDrawable(R.drawable.avengers)*/));
+        l.add(new Peliculas(5, "HOLI", desc,false/*getResources().getDrawable(R.drawable.avengers)*/));
+        l.add(new Peliculas(6, ":)", desc,false/*getResources().getDrawable(R.drawable.avengers)*/));
+        l.add(new Peliculas(7, "!!!", desc,false/*getResources().getDrawable(R.drawable.avengers)*/));
 
         return l;
-    }
-
-
-//pasar aqui mi lista porque maneja mis dos fragmentos.
-
-    @Override
-    public void onFragmentInteraction(Uri uri) {
-
     }
 }

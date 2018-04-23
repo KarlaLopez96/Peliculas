@@ -7,11 +7,14 @@
     tools:context="com.karla00058615.peliculas.MainActivity"
     android:orientation="vertical"
     android:id="@+id/principal_layout">
+
     <LinearLayout
         android:layout_weight="10"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="0dp">
+
         <Button
+            android:onClick="onClick"
             android:id="@+id/button_peliculas"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -27,12 +30,16 @@
             android:layout_weight="1"/>
     </LinearLayout>
 
-    <android.support.v7.widget.FitWindowsFrameLayout
-        android:id="@+id/fragmentC"
-        android:layout_weight="1"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
 
-    </android.support.v7.widget.FitWindowsFrameLayout>
+    <LinearLayout
+        android:layout_weight="90"
+        android:layout_width="match_parent"
+        android:layout_height="0dp">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
 
 </LinearLayout>
