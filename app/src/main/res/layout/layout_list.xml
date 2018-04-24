@@ -19,7 +19,7 @@
                 android:layout_height="match_parent">
 
                 <ImageView
-                    android:id="@+id/planetImageView"
+                    android:id="@+id/peliculasImage"
                     android:layout_margin="2dp"
                     android:src="@android:mipmap/sym_def_app_icon"
                     android:layout_width="match_parent"
@@ -49,11 +49,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
-                <Button
+                <ImageButton
                     android:id="@+id/button_fav"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="FAV"/>
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/estrella" />
 
             </LinearLayout>
         </LinearLayout>

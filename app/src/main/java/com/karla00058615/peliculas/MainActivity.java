@@ -1,20 +1,15 @@
 package com.karla00058615.peliculas;
 
-import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.Button;
-import android.widget.Toast;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button pelis,fav;
     ArrayList<Peliculas> peliculasList = new ArrayList<>();
     RecyclerView recyclerView;
     PeliculasAdapter adapter;
@@ -78,9 +73,9 @@ public class MainActivity extends AppCompatActivity {
         l.add(new Peliculas(2, "Minecraft the movie", desc,false/*getResources().getDrawable(R.drawable.avengers)*/));
         l.add(new Peliculas(3, "League of legends", desc,false/*getResources().getDrawable(R.drawable.avengers)*/));
         l.add(new Peliculas(4, "Fate", desc,false/*getResources().getDrawable(R.drawable.avengers)*/));
-        l.add(new Peliculas(5, "HOLI", desc,false/*getResources().getDrawable(R.drawable.avengers)*/));
-        l.add(new Peliculas(6, ":)", desc,false/*getResources().getDrawable(R.drawable.avengers)*/));
-        l.add(new Peliculas(7, "!!!", desc,false/*getResources().getDrawable(R.drawable.avengers)*/));
+        l.add(new Peliculas(5, "Shrek", desc,false/*getResources().getDrawable(R.drawable.avengers)*/));
+        l.add(new Peliculas(6, "Guardianes de la galaxia", desc,false/*getResources().getDrawable(R.drawable.avengers)*/));
+        l.add(new Peliculas(7, "Los rugrats", desc,false/*getResources().getDrawable(R.drawable.avengers)*/));
 
         return l;
     }

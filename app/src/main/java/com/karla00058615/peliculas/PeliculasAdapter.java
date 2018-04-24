@@ -1,15 +1,13 @@
 package com.karla00058615.peliculas;
 
 import android.content.Context;
-import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.List;
 
@@ -20,7 +18,7 @@ import java.util.List;
 public class PeliculasAdapter extends RecyclerView.Adapter<PeliculasAdapter.PeliculasViewHolder>{
     Context context;
     List<Peliculas> peliculasList;
-    int cont = 0;
+
 
     public PeliculasAdapter(Context context, List<Peliculas> peliculasList) {
         this.context = context;
@@ -44,9 +42,14 @@ public class PeliculasAdapter extends RecyclerView.Adapter<PeliculasAdapter.Peli
             @Override
             public void onClick(View view) {
                 peliculasList.get(position).setFav(!peliculasList.get(position).getFav());
+                holder.fav.setImageDrawable(context.getResources().getDrawable(R.drawable.estrellas));
             }
         });
+        if(peliculasList.get(position).getFav()){
+            holder.fav.setImageDrawable(context.getResources().getDrawable(R.drawable.estrellas));
+        }
     }
+
 
     @Override
     public int getItemCount() {
@@ -55,8 +58,8 @@ public class PeliculasAdapter extends RecyclerView.Adapter<PeliculasAdapter.Peli
 
     protected class PeliculasViewHolder extends RecyclerView.ViewHolder{
         ImageView img;
+        ImageButton fav;
         TextView titleTxtView, descrTxtView;
-        Button fav;
 
         public PeliculasViewHolder(View itemView) {
             super(itemView);
@@ -64,7 +67,7 @@ public class PeliculasAdapter extends RecyclerView.Adapter<PeliculasAdapter.Peli
             //img = itemView.findViewById(R.id.peliculaImg);
             titleTxtView = itemView.findViewById(R.id.titleTxtView);
             descrTxtView = itemView.findViewById(R.id.descTxtView);
-            fav = itemView.findViewById(R.id.button_fav);
+            fav = (ImageButton)itemView.findViewById(R.id.button_fav);
         }
     }
 }
