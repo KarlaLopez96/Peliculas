@@ -37,7 +37,7 @@ public class PeliculasAdapter extends RecyclerView.Adapter<PeliculasAdapter.Peli
     public void onBindViewHolder(final PeliculasViewHolder holder, final int position) {
         holder.titleTxtView.setText(peliculasList.get(position).getTitle());
         holder.descrTxtView.setText(peliculasList.get(position).getDesc());
-        //holder.img.setImageDrawable(peliculasList.get(position).getImg());
+        holder.img.setImageDrawable(peliculasList.get(position).getImg());
         holder.fav.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -64,7 +64,7 @@ public class PeliculasAdapter extends RecyclerView.Adapter<PeliculasAdapter.Peli
         public PeliculasViewHolder(View itemView) {
             super(itemView);
 
-            //img = itemView.findViewById(R.id.peliculaImg);
+            img = itemView.findViewById(R.id.peliculasImage);
             titleTxtView = itemView.findViewById(R.id.titleTxtView);
             descrTxtView = itemView.findViewById(R.id.descTxtView);
             fav = (ImageButton)itemView.findViewById(R.id.button_fav);

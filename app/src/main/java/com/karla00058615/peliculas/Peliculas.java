@@ -1,5 +1,7 @@
 package com.karla00058615.peliculas;
 
+import android.graphics.drawable.Drawable;
+
 /**
  * Created by Karla on 21/4/2018.
  */
@@ -9,14 +11,14 @@ public class Peliculas {
     private int id;
     private  boolean fav;
     private String title, desc;
-   // Drawable img;
+   Drawable img;
 
-    public Peliculas(int id, String title, String desc, boolean fav) {
+    public Peliculas(int id, String title, String desc, boolean fav, Drawable img) {
         this.id = id;
         this.title = title;
         this.desc = desc;
         this.fav = fav;
-     //   this.img = img;
+        this.img = img;
     }
 
     public int getId() {
@@ -27,9 +29,9 @@ public class Peliculas {
         return fav;
     }
 
-//    public Drawable getImg() {
-  //      return img;
-  //  }
+    public Drawable getImg() {
+        return img;
+    }
 
     public void setId(int id) {
         this.id = id;
@@ -39,9 +41,9 @@ public class Peliculas {
         this.fav = fav;
     }
 
-    //public void setImg(Drawable img) {
-      //  this.img = img;
-    //}
+    public void setImg(Drawable img) {
+        this.img = img;
+    }
 
     public String getTitle() {
         return title;
